@@ -1,3 +1,6 @@
+import { onTaskFormSubmit } from "./js/handlers";
+import { refs } from "./js/refs";
+import localStorageApi from "./js/local-storage-api"; 
 /*
   Створи список справ.
   На сторінці є два інпути які має вводиться назва і текст задачі.
@@ -14,3 +17,5 @@
       <p>Текст</p>
   </li>
 */
+localStorageApi.initTasks();
+refs.form.addEventListener('submit', onTaskFormSubmit)
