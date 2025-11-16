@@ -2,7 +2,7 @@ import { onTaskDelete, onTaskFormSubmit } from './js/handlers';
 import { refs } from './js/refs';
 import localStorageApi from './js/local-storage-api';
 import { renderTaskList } from './js/render-tasks';
-import { applyInitialTheme, onThemeChanged } from './js/theme-switcher';
+import { initTheme, onThemeChanged } from './js/theme-switcher';
 /*
   Створи список справ.
   На сторінці є два інпути які має вводиться назва і текст задачі.
@@ -23,5 +23,5 @@ localStorageApi.initTasks();
 renderTaskList(localStorageApi.getTasks());
 refs.form.addEventListener('submit', onTaskFormSubmit);
 refs.taskList.addEventListener('click', onTaskDelete);
-applyInitialTheme();
+initTheme();
 refs.buttonChangeTheme.addEventListener('click', onThemeChanged);

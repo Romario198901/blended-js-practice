@@ -1,7 +1,9 @@
 import localStorageApi from "./local-storage-api";
 import { refs } from "./refs";
-export function applyInitialTheme() {
-  const theme = localStorageApi.initTheme();
+export function initTheme() {
+  const saved = localStorageApi.getTheme();
+  const theme = saved || "theme-dark";
+
   refs.body.classList.add(theme);
 }
 export function onThemeChanged() {

@@ -24,14 +24,5 @@ function getTheme() {
 function saveTheme(theme) {
     localStorage.setItem(STORAGE_THEME, JSON.stringify(theme));
 }
-function initTheme() {
-    const them = getTheme();
-    if(!them) {
-        saveTheme('theme-dark');
-        return 'theme-dark';
-    }
-    return them;
- 
-}
 
-export default { getTasks, saveTask, initTasks, removeTask, getTheme, saveTheme, initTheme };
+export default { getTasks, saveTask, initTasks, removeTask, getTheme, saveTheme,};
