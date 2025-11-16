@@ -1,14 +1,21 @@
 const STORAGE_KEY = 'tasks';
 function getTasks() {
- return  JSON.parse(localStorage.getItem(STORAGE_KEY))
+  return JSON.parse(localStorage.getItem(STORAGE_KEY));
 }
+
 function saveTask(task) {
-    const tasks = getTasks();
-    tasks.push(task);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  const tasks = getTasks();
+  tasks.push(task);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }
 function initTasks() {
-    const tasks = getTasks() ?? [];
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  const tasks = getTasks() ?? [];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }
-export default {getTasks, saveTask, initTasks };
+function removeTask(id) {
+  const tasks = getTasks();
+  const filteredTasks = tasks.filter(task => task.id !== id);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(filteredTasks));
+}
+
+export default { getTasks, saveTask, initTasks, removeTask };

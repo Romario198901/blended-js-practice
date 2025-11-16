@@ -1,6 +1,7 @@
-import { onTaskFormSubmit } from "./js/handlers";
-import { refs } from "./js/refs";
-import localStorageApi from "./js/local-storage-api"; 
+import { onTaskDelete, onTaskFormSubmit } from './js/handlers';
+import { refs } from './js/refs';
+import localStorageApi from './js/local-storage-api';
+import { renderTaskList } from './js/render-tasks';
 /*
   Створи список справ.
   На сторінці є два інпути які має вводиться назва і текст задачі.
@@ -18,4 +19,6 @@ import localStorageApi from "./js/local-storage-api";
   </li>
 */
 localStorageApi.initTasks();
-refs.form.addEventListener('submit', onTaskFormSubmit)
+renderTaskList(localStorageApi.getTasks());
+refs.form.addEventListener('submit', onTaskFormSubmit);
+refs.taskList.addEventListener('click', onTaskDelete);
