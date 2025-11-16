@@ -17,5 +17,21 @@ function removeTask(id) {
   const filteredTasks = tasks.filter(task => task.id !== id);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(filteredTasks));
 }
+const STORAGE_THEME = 'theme';
+function getTheme() {
+  return JSON.parse(localStorage.getItem(STORAGE_THEME));
+}
+function saveTheme(theme) {
+    localStorage.setItem(STORAGE_THEME, JSON.stringify(theme));
+}
+function initTheme() {
+    const them = getTheme();
+    if(!them) {
+        saveTheme('theme-dark');
+        return 'theme-dark';
+    }
+    return them;
+ 
+}
 
-export default { getTasks, saveTask, initTasks, removeTask };
+export default { getTasks, saveTask, initTasks, removeTask, getTheme, saveTheme, initTheme };
